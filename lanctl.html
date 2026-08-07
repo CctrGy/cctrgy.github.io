@@ -1,4 +1,75 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="LANCTL, control para redes locales."><title>LANCTL — Victor.dev</title><link rel="stylesheet" href="theme/theme.css"><script src="theme/scripts.js" defer></script></head><body>
-<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">V</span><span>Victor.dev</span></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span class="sr-only">Abrir menú</span><span></span><span></span><span></span></button><nav id="main-nav" class="main-nav"><a href="index.html">Inicio</a><a href="about.html">Sobre mí</a><a class="active" href="projects.html">Proyectos</a><a class="nav-cta" href="contact.html">Contacto</a></nav></header>
-<main><section class="case-hero dark-case"><a class="back-link" href="projects.html">← Todos los proyectos</a><p class="eyebrow"><span></span> Proyecto principal · Redes</p><h1>LANCTL</h1><p>Control integral de una red local desde una única plataforma.</p><div class="case-meta"><div><span>Hardware</span><b>AVR · STM · ESP · RP</b></div><div><span>Software</span><b>Linux · API · Web</b></div><div><span>Conectividad</span><b>LAN · VPN</b></div></div><div class="terminal-large"><div class="window-bar"><i></i><i></i><i></i><span>lanctl — network control</span></div><pre><code><b>$</b> lanctl scan --local\n<span>Scanning 192.168.1.0/24...</span>\n\n  DEVICE          IP              STATUS\n  router          192.168.1.1     <strong>online</strong>\n  workstation     192.168.1.24    <strong>online</strong>\n  esp-node        192.168.1.42    <strong>online</strong>\n\n<b>$</b> _</code></pre></div></section><section class="case-content"><div class="case-aside">01 / Qué es</div><div><h2>La red completa, bajo control.</h2><p class="lead">LANCTL unifica descubrimiento, supervisión y acciones remotas sobre equipos y nodos de una red local.</p><p>Resuelve la fragmentación entre paneles, comandos y herramientas distintas. Ofrece una vista clara de la red y permite ejecutar tareas frecuentes desde un mismo lugar.</p><a class="button button-primary" href="https://github.com/" target="_blank" rel="noreferrer">Ver en GitHub ↗</a></div><div class="case-aside">02 / Características</div><div class="feature-list"><article><b>01</b><h3>Descubrimiento</h3><p>Detección de hosts, servicios y nodos embebidos.</p></article><article><b>02</b><h3>Supervisión</h3><p>Estado y disponibilidad en tiempo real.</p></article><article><b>03</b><h3>Control remoto</h3><p>Acciones automatizadas de forma local o por VPN.</p></article></div><div class="case-aside">03 / Arquitectura</div><div><div class="architecture"><span>AVR / STM / ESP<small>Nodos</small></span><b>→</b><span>LAN / VPN<small>Transporte</small></span><b>→</b><span>RP<small>Servidor</small></span><b>→</b><span>Web / CLI<small>Control</small></span></div><p>Los nodos físicos se comunican por la red con un servicio central basado en RP. Una API expone el estado y las acciones a la interfaz web y a las herramientas de línea de comandos.</p><div class="chips"><b>AVR</b><b>STM</b><b>ESP</b><b>RP</b></div></div></section><section class="next-project"><span>Siguiente proyecto</span><a href="gitdroid.html">GitDroidStore <b>↗</b></a></section></main>
-<footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">V</span><span>Victor.dev</span></a><p>© <span id="year"></span> Victor.</p><div><a href="projects.html">Proyectos</a><a href="contact.html">Contacto</a></div></footer></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="LANCTL: administración, inventario y diagnóstico de infraestructuras LAN desde Windows.">
+  <title>LANCTL — Victor.dev</title>
+  <link rel="stylesheet" href="theme/theme.css">
+  <script src="theme/scripts.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">V</span><span>Victor.dev</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span class="sr-only">Abrir menú</span><span></span><span></span><span></span></button>
+    <nav id="main-nav" class="main-nav"><a href="index.html">Inicio</a><a href="about.html">Sobre mí</a><a class="active" href="projects.html">Proyectos</a><a class="nav-cta" href="contact.html">Contacto</a></nav>
+  </header>
+  <main>
+    <section class="lanctl-hero">
+      <div class="lanctl-hero-copy">
+        <a class="back-link" href="projects.html">← Todos los proyectos</a>
+        <p class="eyebrow"><span></span> LAN Controller · 0.3.0-beta.1</p>
+        <h1>LANCTL</h1>
+        <p class="lanctl-tagline">Administración, inventario y diagnóstico de infraestructuras LAN desde Windows.</p>
+        <div class="case-meta">
+          <div><span>Plataforma</span><b>Windows 10 / 11</b></div>
+          <div><span>Núcleo</span><b>Python · SQLite</b></div>
+          <div><span>Interfaces</span><b>GUI · CLI · TUI</b></div>
+        </div>
+        <a class="button lanctl-github" href="https://github.com/CctrGy/LANCTL" target="_blank" rel="noreferrer">Repositorio GitHub <span>↗</span></a>
+      </div>
+      <div class="lanctl-showcase" aria-label="Vista conceptual de LANCTL">
+        <img src="theme/images/lanctl.png" alt="Icono oficial de LANCTL">
+        <div class="lanctl-terminal">
+          <div class="window-bar"><i></i><i></i><i></i><span>lanctl — inventario</span></div>
+          <pre><code><b>$</b> lanctl list --accurate --progress<br><em>Discovering ICMP, ARP and WS-Discovery...</em><br><br>DEVICE        IP              STATUS<br>GATEWAY       192.168.1.1     <strong>active</strong><br>workstation   192.168.1.24    <strong>active</strong><br>rack-monitor  192.168.1.42    <strong>active</strong></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="lanctl-intro">
+      <p class="section-kicker">01 / El proyecto</p>
+      <div><h2>Una LAN que puedes entender, documentar y administrar.</h2><p class="lead">LANCTL reúne descubrimiento de red, inventario persistente, diagnóstico, conexiones y auditoría en una sola aplicación.</p><p>Está pensado para Windows y ofrece cuatro formas de trabajo: interfaz gráfica, comandos directos, consola persistente y TUI a pantalla completa. Los resultados pueden exportarse como tabla, JSON, CSV, HTML o XML.</p></div>
+    </section>
+
+    <section class="lanctl-capabilities">
+      <div class="section-heading"><div><p class="eyebrow"><span></span> Capacidades reales</p><h2>Una herramienta, varias capas.</h2></div><p>Desde descubrir dispositivos hasta abrir sus protocolos de administración y conservar la evolución de cada red.</p></div>
+      <div class="lanctl-feature-grid">
+        <article><span>01</span><h3>Descubrimiento</h3><p>ICMP, ARP y WS-Discovery en el núcleo; mDNS y SSDP mediante complemento LCP.</p></article>
+        <article><span>02</span><h3>Inventario</h3><p>Identidad por MAC, IP histórica, alias, fabricante, grupos, descripción y estados CNF.</p></article>
+        <article><span>03</span><h3>Diagnóstico</h3><p>Ping, ARP activo, escaneo TCP e identificación de servicios basada en evidencias.</p></article>
+        <article><span>04</span><h3>Administración</h3><p>Acceso a SSH, TR-064, Telnet, HTTP(S), FTP, RDP, RTSP y SMB.</p></article>
+        <article><span>05</span><h3>Proyectos VLF</h3><p>Contenedores verificables con inventario SQLite, configuración, credenciales cifradas y auditoría.</p></article>
+        <article><span>06</span><h3>Complementos LCP</h3><p>Extensiones con permisos y ámbitos declarados para descubrimiento, análisis, temas e idiomas.</p></article>
+      </div>
+    </section>
+
+    <section class="lanctl-architecture-section">
+      <div class="architecture-heading"><p class="section-kicker">02 / Arquitectura</p><div><h2>Del descubrimiento a la acción.</h2><p>El hardware del rack es un componente experimental independiente; no es el servidor central ni representa la arquitectura principal de LANCTL.</p></div></div>
+      <div class="lanctl-architecture" aria-label="Arquitectura general de LANCTL">
+        <article><span>Entrada</span><b>Red LAN</b><small>ICMP · ARP · WS-Discovery</small></article>
+        <i>→</i>
+        <article><span>Núcleo</span><b>Aplicación Python</b><small>Descubrimiento · diagnóstico · protocolos</small></article>
+        <i>→</i>
+        <article><span>Datos</span><b>SQLite + VLF</b><small>Inventario · configuración · auditoría</small></article>
+        <i>→</i>
+        <article><span>Presentación</span><b>GUI · CLI · TUI</b><small>Consulta · exportación · acciones</small></article>
+      </div>
+      <div class="lanctl-security"><div><span>Seguridad</span><b>DPAPI</b><p>Credenciales vinculadas al usuario de Windows y confirmación de operaciones sensibles.</p></div><div><span>Extensibilidad</span><b>.lcp</b><p>Plugins verificables con permisos, eventos y ámbitos explícitos.</p></div><div><span>Componente aparte</span><b>RackFimeware2</b><p>Firmware STM32F411 experimental para monitorización del rack.</p></div></div>
+    </section>
+
+    <section class="next-project"><span>Siguiente proyecto</span><a href="gitdroid.html">GitDroidStore <b>↗</b></a></section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">V</span><span>Victor.dev</span></a><p>© <span id="year"></span> Victor.</p><div><a href="projects.html">Proyectos</a><a href="contact.html">Contacto</a></div></footer>
+</body>
+</html>

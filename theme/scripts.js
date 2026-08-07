@@ -17,6 +17,12 @@ navigation?.querySelectorAll('a').forEach((link) => {
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
 
+const favicon = document.createElement('link');
+favicon.rel = 'icon';
+favicon.type = 'image/png';
+favicon.href = 'theme/images/favicon.png';
+document.head.appendChild(favicon);
+
 const originalText = new WeakMap();
 const pageName = location.pathname.split('/').pop() || 'index.html';
 
