@@ -1,0 +1,25 @@
+{
+  "meta": { "language": "Español", "code": "es" },
+  "strings": {
+    "Inicio": "Inicio", "Sobre mí": "Sobre mí", "Proyectos": "Proyectos", "Contacto": "Contacto",
+    "Disponible para nuevos proyectos": "Disponible para nuevos proyectos", "Sistemas embebidos · Redes · Software": "Sistemas embebidos · Redes · Software",
+    "Conecto hardware y código para crear": "Conecto hardware y código para crear", "sistemas útiles.": "sistemas útiles.",
+    "Soy Victor, desarrollador técnico especializado en AVR, STM, ESP y RP; también creo programas de ordenador y páginas web, y gestiono proyectos tecnológicos.": "Soy Victor, desarrollador técnico especializado en AVR, STM, ESP y RP; también creo programas de ordenador y páginas web, y gestiono proyectos tecnológicos.",
+    "Ver proyectos": "Ver proyectos", "Conóceme mejor →": "Conóceme mejor →", "Trabajo seleccionado": "Trabajo seleccionado", "Proyectos con propósito.": "Proyectos con propósito.", "Ver todos →": "Ver todos →",
+    "¿Tienes una idea en mente?": "¿Tienes una idea en mente?", "Vamos a construirla.": "Vamos a construirla.", "Escríbeme ↗": "Escríbeme ↗",
+    "Hardware, redes y software.": "Hardware, redes y software.", "Un mismo sistema.": "Un mismo sistema.", "Hola, soy Victor.": "Hola, soy Victor.",
+    "Diseño sistemas donde hardware y software trabajan juntos para resolver problemas reales.": "Diseño sistemas donde hardware y software trabajan juntos para resolver problemas reales.",
+    "Trabajo con las familias AVR, STM, ESP y RP, desde el firmware y la integración de sensores hasta la comunicación entre dispositivos. También desarrollo y diseño PCB para convertir prototipos en soluciones sólidas.": "Trabajo con las familias AVR, STM, ESP y RP, desde el firmware y la integración de sensores hasta la comunicación entre dispositivos. También desarrollo y diseño PCB para convertir prototipos en soluciones sólidas.",
+    "Creo programas de ordenador y páginas web, y me ocupo de la gestión de proyectos tecnológicos. En redes, me interesan la administración, las VPN y la automatización.": "Creo programas de ordenador y páginas web, y me ocupo de la gestión de proyectos tecnológicos. En redes, me interesan la administración, las VPN y la automatización.",
+    "Mi forma de trabajar parte de entender el sistema completo, simplificarlo, coordinar su desarrollo y documentarlo bien.": "Mi forma de trabajar parte de entender el sistema completo, simplificarlo, coordinar su desarrollo y documentarlo bien.",
+    "Desarrollo y gestión": "Desarrollo y gestión", "Programas de ordenador, creación de webs y gestión de proyectos.": "Programas de ordenador, creación de webs y gestión de proyectos.",
+    "Perfil técnico": "Perfil técnico", "Sistemas embebidos": "Sistemas embebidos", "Sistemas y redes": "Sistemas y redes", "Desarrollo": "Desarrollo", "Redes": "Redes",
+    "Proyectos principales": "Proyectos principales", "Dos productos.": "Dos productos.", "Problemas reales.": "Problemas reales.", "Esta página muestra únicamente mis dos proyectos de mayor alcance.": "Esta página muestra únicamente mis dos proyectos de mayor alcance.", "Ver proyecto ↗": "Ver proyecto ↗",
+    "Todos los proyectos": "Todos los proyectos", "Proyecto principal · Redes": "Proyecto principal · Redes", "Control integral de una red local desde una única plataforma.": "Control integral de una red local desde una única plataforma.",
+    "Qué es": "Qué es", "La red completa, bajo control.": "La red completa, bajo control.", "Características": "Características", "Arquitectura": "Arquitectura", "Ver en GitHub ↗": "Ver en GitHub ↗", "Siguiente proyecto": "Siguiente proyecto",
+    "Aplicación · Android": "Aplicación · Android", "Repositorios con APK, descubiertos e instalados desde un solo lugar.": "Repositorios con APK, descubiertos e instalados desde un solo lugar.", "GitHub convertido en tienda.": "GitHub convertido en tienda.", "Flujo técnico": "Flujo técnico", "Volver al proyecto principal": "Volver al proyecto principal",
+    "Hablemos de tu próximo": "Hablemos de tu próximo", "sistema.": "sistema.", "Puedes escribirme sobre sistemas embebidos, redes, programas de ordenador, creación de webs, gestión de proyectos o colaboraciones técnicas.": "Puedes escribirme sobre sistemas embebidos, redes, programas de ordenador, creación de webs, gestión de proyectos o colaboraciones técnicas.", "Perfil técnico": "Perfil técnico", "Repositorio principal": "Repositorio principal", "Repositorio Android": "Repositorio Android", "Actualmente disponible para colaboraciones y nuevos proyectos.": "Actualmente disponible para colaboraciones y nuevos proyectos.",
+    "Email": "Email", "Código y proyectos": "Código y proyectos", "Diseñado y desarrollado por Victor.": "Diseñado y desarrollado por Victor.", "Idioma": "Idioma"
+  },
+  "titles": { "index.html": "Victor — Desarrollador", "about.html": "Sobre mí — Victor.dev", "projects.html": "Proyectos — Victor.dev", "lanctl.html": "LANCTL — Victor.dev", "gitdroid.html": "GitDroidStore — Victor.dev", "contact.html": "Contacto — Victor.dev" }
+}

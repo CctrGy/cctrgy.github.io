@@ -1,0 +1,25 @@
+{
+  "meta": { "language": "English", "code": "en" },
+  "strings": {
+    "Inicio": "Home", "Sobre mí": "About", "Proyectos": "Projects", "Contacto": "Contact",
+    "Disponible para nuevos proyectos": "Available for new projects", "Sistemas embebidos · Redes · Software": "Embedded systems · Networks · Software",
+    "Conecto hardware y código para crear": "I connect hardware and code to build", "sistemas útiles.": "useful systems.",
+    "Soy Victor, desarrollador técnico especializado en AVR, STM, ESP y RP; también creo programas de ordenador y páginas web, y gestiono proyectos tecnológicos.": "I'm Victor, a technical developer specializing in AVR, STM, ESP and RP; I also build desktop software and websites, and manage technology projects.",
+    "Ver proyectos": "View projects", "Conóceme mejor →": "Learn more about me →", "Trabajo seleccionado": "Selected work", "Proyectos con propósito.": "Projects with purpose.", "Ver todos →": "View all →",
+    "¿Tienes una idea en mente?": "Have an idea in mind?", "Vamos a construirla.": "Let's build it.", "Escríbeme ↗": "Get in touch ↗",
+    "Hardware, redes y software.": "Hardware, networks and software.", "Un mismo sistema.": "One connected system.", "Hola, soy Victor.": "Hi, I'm Victor.",
+    "Diseño sistemas donde hardware y software trabajan juntos para resolver problemas reales.": "I design systems where hardware and software work together to solve real problems.",
+    "Trabajo con las familias AVR, STM, ESP y RP, desde el firmware y la integración de sensores hasta la comunicación entre dispositivos. También desarrollo y diseño PCB para convertir prototipos en soluciones sólidas.": "I work with the AVR, STM, ESP and RP families, from firmware and sensor integration to communication between devices. I also develop and design PCBs to turn prototypes into robust solutions.",
+    "Creo programas de ordenador y páginas web, y me ocupo de la gestión de proyectos tecnológicos. En redes, me interesan la administración, las VPN y la automatización.": "I build desktop software and websites, and manage technology projects. In networking, I focus on administration, VPNs and automation.",
+    "Mi forma de trabajar parte de entender el sistema completo, simplificarlo, coordinar su desarrollo y documentarlo bien.": "My approach starts with understanding the complete system, simplifying it, coordinating its development and documenting it clearly.",
+    "Desarrollo y gestión": "Development and management", "Programas de ordenador, creación de webs y gestión de proyectos.": "Desktop software, website creation and project management.",
+    "Perfil técnico": "Technical profile", "Sistemas embebidos": "Embedded systems", "Sistemas y redes": "Systems and networks", "Desarrollo": "Development", "Redes": "Networks",
+    "Proyectos principales": "Main projects", "Dos productos.": "Two products.", "Problemas reales.": "Real problems.", "Esta página muestra únicamente mis dos proyectos de mayor alcance.": "This page features only my two largest projects.", "Ver proyecto ↗": "View project ↗",
+    "Todos los proyectos": "All projects", "Proyecto principal · Redes": "Main project · Networks", "Control integral de una red local desde una única plataforma.": "Complete local network control from a single platform.",
+    "Qué es": "What it is", "La red completa, bajo control.": "Your entire network, under control.", "Características": "Features", "Arquitectura": "Architecture", "Ver en GitHub ↗": "View on GitHub ↗", "Siguiente proyecto": "Next project",
+    "Aplicación · Android": "Application · Android", "Repositorios con APK, descubiertos e instalados desde un solo lugar.": "Discover and install repositories with APKs from one place.", "GitHub convertido en tienda.": "GitHub turned into a store.", "Flujo técnico": "Technical flow", "Volver al proyecto principal": "Back to the main project",
+    "Hablemos de tu próximo": "Let's talk about your next", "sistema.": "system.", "Puedes escribirme sobre sistemas embebidos, redes, programas de ordenador, creación de webs, gestión de proyectos o colaboraciones técnicas.": "Get in touch about embedded systems, networks, desktop software, website creation, project management or technical collaborations.", "Perfil técnico": "Technical profile", "Repositorio principal": "Main repository", "Repositorio Android": "Android repository", "Actualmente disponible para colaboraciones y nuevos proyectos.": "Currently available for collaborations and new projects.",
+    "Email": "Email", "Código y proyectos": "Code and projects", "Diseñado y desarrollado por Victor.": "Designed and developed by Victor.", "Idioma": "Language"
+  },
+  "titles": { "index.html": "Victor — Developer", "about.html": "About — Victor.dev", "projects.html": "Projects — Victor.dev", "lanctl.html": "LANCTL — Victor.dev", "gitdroid.html": "GitDroidStore — Victor.dev", "contact.html": "Contact — Victor.dev" }
+}
