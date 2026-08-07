@@ -65,7 +65,7 @@ async function setLanguage(language) {
 if (navigation) {
   const languageControl = document.createElement('label');
   languageControl.className = 'language-control';
-  languageControl.innerHTML = '<span class="sr-only">Idioma</span><select class="language-select" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select>';
+  languageControl.innerHTML = '<span class="sr-only">Idioma</span><select class="language-select" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option><option value="ca">CA</option><option value="fr">FR</option></select>';
   navigation.insertBefore(languageControl, navigation.querySelector('.nav-cta'));
 
   const languageSelect = languageControl.querySelector('select');

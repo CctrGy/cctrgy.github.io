@@ -10,9 +10,9 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html"><span class="brand-mark">V</span><span>Victor.dev</span></a>
+    <a class="brand" href="./"><span class="brand-mark">V</span><span>Victor.dev</span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span class="sr-only">Abrir menú</span><span></span><span></span><span></span></button>
-    <nav id="main-nav" class="main-nav"><a href="index.html">Inicio</a><a href="about.html">Sobre mí</a><a class="active" href="projects.html">Proyectos</a><a class="nav-cta" href="contact.html">Contacto</a></nav>
+    <nav id="main-nav" class="main-nav"><a href="./">Inicio</a><a href="about.html">Sobre mí</a><a class="active" href="projects.html">Proyectos</a><a class="nav-cta" href="contact.html">Contacto</a></nav>
   </header>
   <main>
     <section class="lanctl-hero">
@@ -38,12 +38,14 @@
       </div>
     </section>
 
-    <section class="lanctl-intro">
+    <nav class="lanctl-toc" aria-label="Contenido de LANCTL"><a href="#resumen">Resumen</a><a href="#capacidades">Capacidades</a><a href="#arquitectura">Arquitectura</a><a href="#vlf-lcp">VLF y LCP</a><a href="#seguridad">Seguridad</a><a href="#rack">RackMonitor</a></nav>
+
+    <section class="lanctl-intro" id="resumen">
       <p class="section-kicker">01 / El proyecto</p>
       <div><h2>Una LAN que puedes entender, documentar y administrar.</h2><p class="lead">LANCTL reúne descubrimiento de red, inventario persistente, diagnóstico, conexiones y auditoría en una sola aplicación.</p><p>Está pensado para Windows y ofrece cuatro formas de trabajo: interfaz gráfica, comandos directos, consola persistente y TUI a pantalla completa. Los resultados pueden exportarse como tabla, JSON, CSV, HTML o XML.</p></div>
     </section>
 
-    <section class="lanctl-capabilities">
+    <section class="lanctl-capabilities" id="capacidades">
       <div class="section-heading"><div><p class="eyebrow"><span></span> Capacidades reales</p><h2>Una herramienta, varias capas.</h2></div><p>Desde descubrir dispositivos hasta abrir sus protocolos de administración y conservar la evolución de cada red.</p></div>
       <div class="lanctl-feature-grid">
         <article><span>01</span><h3>Descubrimiento</h3><p>ICMP, ARP y WS-Discovery en el núcleo; mDNS y SSDP mediante complemento LCP.</p></article>
@@ -55,7 +57,7 @@
       </div>
     </section>
 
-    <section class="lanctl-architecture-section">
+    <section class="lanctl-architecture-section" id="arquitectura">
       <div class="architecture-heading"><p class="section-kicker">02 / Arquitectura</p><div><h2>Del descubrimiento a la acción.</h2><p>El hardware del rack es un componente experimental independiente; no es el servidor central ni representa la arquitectura principal de LANCTL.</p></div></div>
       <div class="lanctl-architecture" aria-label="Arquitectura general de LANCTL">
         <article><span>Entrada</span><b>Red LAN</b><small>ICMP · ARP · WS-Discovery</small></article>
@@ -69,8 +71,43 @@
       <div class="lanctl-security"><div><span>Seguridad</span><b>DPAPI</b><p>Credenciales vinculadas al usuario de Windows y confirmación de operaciones sensibles.</p></div><div><span>Extensibilidad</span><b>.lcp</b><p>Plugins verificables con permisos, eventos y ámbitos explícitos.</p></div><div><span>Componente aparte</span><b>RackFimeware2</b><p>Firmware STM32F411 experimental para monitorización del rack.</p></div></div>
     </section>
 
+    <section class="lanctl-workflow">
+      <div class="section-heading"><div><p class="eyebrow"><span></span> Flujo de trabajo</p><h2>De la detección al inventario.</h2></div><p>Los perfiles permiten elegir entre velocidad y profundidad sin cambiar de herramienta.</p></div>
+      <div class="workflow-grid">
+        <article><span>01</span><h3>Descubrir</h3><code>lanctl list --accurate --progress</code><p>Localiza equipos mediante ICMP, ARP y WS-Discovery. Los plugins pueden añadir mDNS y SSDP.</p></article>
+        <article><span>02</span><h3>Identificar</h3><code>lanctl scan CAM1 --identify</code><p>Utiliza banners y sondas inocuas, registrando producto, confianza y evidencia.</p></article>
+        <article><span>03</span><h3>Consultar</h3><code>lanctl list --where "active and group=IOT"</code><p>Filtra de forma segura por IP, MAC, alias, fabricante, protocolo, grupo o estado.</p></article>
+        <article><span>04</span><h3>Conectar</h3><code>lanctl open NAS ssh --dry-run</code><p>Prepara el cliente adecuado y permite revisar el destino antes de abrirlo.</p></article>
+      </div>
+      <div class="interfaces-strip"><div><b>GUI</b><span>Inventario, edición, proyectos y diagnóstico</span></div><div><b>CLI</b><span>Comandos rápidos y automatizables</span></div><div><b>Consola</b><span>Selección persistente de dispositivos</span></div><div><b>TUI</b><span>Acciones contextuales a pantalla completa</span></div></div>
+    </section>
+
+    <section class="lanctl-formats" id="vlf-lcp">
+      <div class="format-card format-vlf"><p class="section-kicker">03 / Proyectos VLF 1.0</p><h2>Una red completa en un contenedor verificable.</h2><p>Un archivo <code>.vlf</code> conserva metadatos, identidad de LAN, VLAN, topología, inventario SQLite, configuración, credenciales cifradas y auditoría diaria.</p><ul><li>Hashes SHA-256 de contenido y checksum general.</li><li>Verificación de estructura y de integridad SQLite.</li><li>Actualizaciones transaccionales con copia <code>.vlf.bak</code>.</li><li>Compatibilidad garantizada dentro de la serie LANCTL 0.3.x.</li><li>Protección frente a rutas absolutas, duplicados y archivos sobredimensionados.</li></ul><code class="command-line">lanctl project verify Oficina.vlf</code></div>
+      <div class="format-card format-lcp"><p class="section-kicker">04 / Complement Platform 1.0</p><h2>Extensiones con alcance declarado.</h2><p>Los paquetes <code>.lcp</code> pueden añadir plugins, temas, idiomas, automatización, análisis, seguridad, protocolos, scanners y exportadores.</p><ul><li>Runtime <b>isolated</b> para extensiones declarativas.</li><li>Runtime <b>trusted</b> con activación explícita mediante <code>--trust</code>.</li><li>Permisos, dependencias, eventos y namespaces verificables.</li><li>Instalación transaccional; un paquete nunca se activa automáticamente.</li><li>Modo seguro para recuperar el arranque ante plugins defectuosos.</li></ul><code class="command-line">lanctl plugin enable ID --grant-all --trust</code></div>
+    </section>
+
+    <section class="lanctl-security-section" id="seguridad">
+      <div class="security-copy"><p class="section-kicker">05 / Seguridad operacional</p><h2>Control antes que automatización ciega.</h2><p>LANCTL está diseñado para redes autorizadas. Las operaciones sensibles requieren confirmación y las credenciales se protegen mediante DPAPI, vinculadas al usuario de Windows.</p><div class="security-points"><div><b>DPAPI</b><span>Las credenciales no se almacenan en texto plano.</span></div><div><b>Dry run</b><span>Permite validar destinos y planes antes de actuar.</span></div><div><b>Auditoría</b><span>Separa actividad operativa de cambios en el inventario.</span></div><div><b>VLF</b><span>Verifica hashes, rutas internas, tamaño y bases SQLite.</span></div></div></div>
+      <div class="cisco-panel"><span>Capa gestionada Cisco</span><h3>Planificar, clasificar y confirmar.</h3><p>El flujo separa parser, planificación, política de riesgo y adaptador. Actualmente solo está habilitado el adaptador simulado.</p><ol><li><b>READ_ONLY</b> se ejecuta sin confirmación.</li><li><b>CONFIG_CHANGE</b> exige autorización explícita.</li><li><b>DESTRUCTIVE_OR_DISRUPTIVE</b> requiere confirmación.</li><li><b>PERSIST_CONFIG</b> nunca queda implícito en otro cambio.</li></ol><code>run switch SW --dry-run port show NAS status</code></div>
+    </section>
+
+    <section class="lanctl-release">
+      <p class="section-kicker">06 / Estado de la beta</p><div class="release-number">0.3.0<span>-beta.1</span></div><div class="release-facts"><article><b>211</b><span>pruebas superadas</span></article><article><b>4</b><span>superficies verificadas: comando, CLI, TUI y GUI</span></article><article><b>22.3 MB</b><span>ejecutable Windows one-file verificado</span></article><article><b>SHA-256</b><span>artefacto y contratos VLF/LCP comprobados</span></article></div><p class="release-note">Una instalación limpia crea su estructura de datos y plugins integrados. Una actualización desde una versión anterior conserva configuración, dispositivos y grupos.</p>
+    </section>
+
+    <section class="lanctl-install">
+      <div><p class="section-kicker">07 / Ejecutar el proyecto</p><h2>Windows 10/11 y Python 3.10+.</h2><p>La GUI requiere <code>pywebview</code>. Las operaciones de red necesitan acceso autorizado y privilegios suficientes.</p></div><div class="install-code"><div class="window-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>git clone https://github.com/CctrGy/LANCTL.git<br>cd LANCTL<br>python -m venv .venv<br>.\.venv\Scripts\Activate.ps1<br>python -m pip install -e .<br><br>lanctl --gui<br>lanctl --cli<br>lanctl -tui</code></pre></div>
+    </section>
+
+    <section class="rack-section" id="rack">
+      <div class="rack-heading"><div><p class="section-kicker">08 / Componente experimental</p><h2>RackMonitor Firmware 2.</h2></div><p>Proyecto independiente incluido en el repositorio: migración del firmware ESP32 a una Black Pill STM32F411CE para supervisión física del rack.</p></div>
+      <div class="rack-grid"><article><span>Controlador</span><b>STM32F411CE</b><p>Black Pill programada mediante ST-Link y PlatformIO.</p></article><article><span>Red</span><b>ENC28J60</b><p>Ethernet con consola SSHv2 en el puerto 22.</p></article><article><span>Sensores</span><b>2 × DS18B20</b><p>Sondas superior e inferior para control térmico.</p></article><article><span>Salidas</span><b>2 relés + NeoPixel</b><p>Ventiladores en modo seguro y tres LED de estado.</p></article><article><span>Consola</span><b>USB CDC</b><p>CLI serie y diagnóstico mediante COM50.</p></article><article><span>Seguridad SSH</span><b>ECDSA P-256</b><p>Clave de host estable generada por cada instalación.</p></article></div>
+      <div class="rack-separation"><b>Importante</b><p>RackMonitor no es el servidor central de LANCTL ni define su arquitectura. Es firmware experimental complementario para hardware de rack.</p></div>
+    </section>
+
     <section class="next-project"><span>Siguiente proyecto</span><a href="gitdroid.html">GitDroidStore <b>↗</b></a></section>
   </main>
-  <footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">V</span><span>Victor.dev</span></a><p>© <span id="year"></span> Victor.</p><div><a href="projects.html">Proyectos</a><a href="contact.html">Contacto</a></div></footer>
+  <footer class="site-footer"><a class="brand" href="./"><span class="brand-mark">V</span><span>Victor.dev</span></a><p>© <span id="year"></span> Victor.</p><div><a href="projects.html">Proyectos</a><a href="contact.html">Contacto</a></div></footer>
 </body>
 </html>
