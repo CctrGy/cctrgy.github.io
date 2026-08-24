@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="PortWaver, terminal serie gráfica y configurable para Windows.">
+  <base href="../">
+  <title>PortWaver — Victor.dev</title>
+  <link rel="stylesheet" href="theme/theme.css">
+  <script src="theme/scripts.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./"><span class="brand-mark">V</span><span>Victor.dev</span></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav"><span class="sr-only">Abrir menú</span><span></span><span></span><span></span></button><nav id="main-nav" class="main-nav"><a href="./">Inicio</a><a href="about.html">Sobre mí</a><a class="active" href="projects.html">Proyectos</a><a class="nav-cta" href="contact.html">Canales</a></nav></header>
+  <main>
+    <section class="portwaver-hero">
+      <div><a class="back-link" href="projects.html">← Todos los proyectos</a><p class="eyebrow"><span></span> Python · Serial · Windows</p><h1>PortWaver</h1><p class="lanctl-tagline">Terminal serie gráfica para observar, filtrar y automatizar conversaciones con dispositivos.</p><div class="case-meta"><div><span>Interfaz</span><b>pywebview</b></div><div><span>Transporte</span><b>pySerial</b></div><div><span>Estado</span><b>Desarrollo</b></div></div><nav class="project-subnav"><a aria-current="page" href="PortWaver/">Resumen</a><a href="PortWaver/specs.html">Especificaciones</a><a href="PortWaver/info.html">Ficha rápida</a></nav><a class="button button-primary" href="https://github.com/CctrGy/PortWaver" target="_blank" rel="noreferrer">Ver código en GitHub ↗</a></div>
+      <div class="portwaver-console"><img src="theme/images/portwaver.png" alt="Icono oficial de PortWaver"><div class="window-bar"><i></i><i></i><i></i><span>PORTWAVER · SERIAL UNIT</span></div><pre><code><em>SYS:CONNECTED</em>  COM3 · 115200 · 8N1
+
+<b>[00000124 ms]</b> device.ready=true
+<b>[00000408 ms]</b> temperature=24.6
+
+TX&gt; <strong>status --all</strong></code></pre></div>
+    </section>
+    <section class="lanctl-intro"><p class="section-kicker">01 / El proyecto</p><div><h2>Una mesa de trabajo para conexiones serie.</h2><p class="lead">PortWaver reúne configuración del puerto, recepción en tiempo real, envío de comandos y registro de sesiones dentro de una interfaz de escritorio.</p><p>Está enfocado en el diagnóstico de microcontroladores, equipos de laboratorio y dispositivos USB serie. También incluye un modo emulado de bucle para probar configuraciones sin hardware conectado.</p></div></section>
+    <section class="lanctl-capabilities"><div class="section-heading"><div><p class="eyebrow"><span></span> Capacidades implementadas</p><h2>Más que una consola de texto.</h2></div></div><div class="lanctl-feature-grid"><article><span>01</span><h3>Puertos</h3><p>Detección de interfaces disponibles e identificación USB mediante VID y PID.</p></article><article><span>02</span><h3>Transporte</h3><p>Baud rate, bits, paridad, stop bits, control de flujo y finales de línea configurables.</p></article><article><span>03</span><h3>Señales</h3><p>Control de RTS, DTR y BREAK; lectura de CTS, DSR, DCD y RI.</p></article><article><span>04</span><h3>Procesamiento</h3><p>Filtros de recepción, respuestas automáticas y resaltado por texto, fecha o expresión regular.</p></article><article><span>05</span><h3>Automatización</h3><p>Botones rápidos, atajos de teclado y envío secuencial de archivos de texto.</p></article><article><span>06</span><h3>Sesiones</h3><p>Perfiles <code>.UserVSP</code>, configuración persistente y registros con tiempo transcurrido.</p></article></div></section>
+    <section class="next-project"><span>Documentación técnica</span><a href="PortWaver/specs.html">Explorar PortWaver <b>↗</b></a></section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="./"><span class="brand-mark">V</span><span>Victor.dev</span></a><p>© <span id="year"></span> Victor.</p><div><a href="https://github.com/CctrGy/PortWaver" target="_blank" rel="noreferrer">GitHub</a><a href="contact.html">Canales</a></div></footer>
+</body>
+</html>

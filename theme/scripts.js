@@ -24,7 +24,14 @@ favicon.href = 'theme/images/favicon.png';
 document.head.appendChild(favicon);
 
 const originalText = new WeakMap();
-const pageName = location.pathname.split('/').pop() || 'index.html';
+const pathParts = location.pathname.split('/').filter(Boolean);
+const directoryRoute = location.pathname.endsWith('/');
+const fileName = directoryRoute ? 'index.html' : (pathParts.at(-1) || 'index.html');
+const parentName = directoryRoute ? pathParts.at(-1) : pathParts.at(-2);
+const legacyTitleKeys = { lanctl: 'lanctl.html', gitdroid: 'gitdroid.html' };
+const pageName = fileName === 'index.html' && legacyTitleKeys[parentName]
+  ? legacyTitleKeys[parentName]
+  : fileName;
 
 function translatableTextNodes() {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
