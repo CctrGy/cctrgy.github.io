@@ -28,7 +28,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 7rem;
+      scroll-padding-top: 6rem;
     }
 
     body {
@@ -123,7 +123,7 @@
     .spec-index-shell {
       position: sticky;
       z-index: 8;
-      top: 82px;
+      top: 0;
       border-bottom: 1px solid var(--spec-line);
       background: rgba(243, 240, 231, 0.94);
       backdrop-filter: blur(12px);
@@ -216,6 +216,7 @@
     }
 
     .spec-section {
+      scroll-margin-top: 6rem;
       padding-bottom: clamp(4rem, 8vw, 7rem);
       border-bottom: 1px solid var(--spec-line);
       margin-bottom: clamp(4rem, 8vw, 7rem);
@@ -593,9 +594,7 @@
     }
 
     @media (max-width: 680px) {
-      .spec-index-shell {
-        top: 72px;
-      }
+      .spec-index-shell { top: 0; }
 
       .spec-grid,
       .spec-grid.three,
