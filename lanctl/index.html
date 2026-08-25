@@ -6,7 +6,7 @@
   <meta name="description" content="LANCTL: administración, inventario y diagnóstico de infraestructuras LAN desde Windows.">
   <base href="../">
   <title>LANCTL — Victor.dev</title>
-  <link rel="stylesheet" href="theme/theme.css">
+  <link rel="stylesheet" href="theme/theme.css?v=lanctl-actions-20260825">
   <script src="theme/scripts.js" defer></script>
 </head>
 <body>
@@ -27,10 +27,14 @@
           <div><span>Núcleo</span><b>Python · SQLite</b></div>
           <div><span>Interfaces</span><b>GUI · CLI · TUI</b></div>
         </div>
-        <a class="button button-primary" href="lanctl/download.html">Descargar LANCTL <span>↓</span></a>
-        <a class="button lanctl-github" href="lanctl/specs.html">Especificaciones interactivas <span>→</span></a>
-        <a class="text-link" href="lanctl/info.html">Ficha rápida →</a>
-        <a class="button lanctl-github" href="https://github.com/CctrGy/LANCTL" target="_blank" rel="noreferrer">Repositorio GitHub <span>↗</span></a>
+        <div class="lanctl-actions" aria-label="Acciones de LANCTL">
+          <a class="lanctl-action-primary" href="lanctl/download.html"><span><small>Windows 10 / 11</small><b>Descargar LANCTL</b></span><i aria-hidden="true">↓</i></a>
+          <div class="lanctl-action-secondary">
+            <a href="lanctl/specs.html"><span><small>Documentación</small><b>Especificaciones</b></span><i aria-hidden="true">→</i></a>
+            <a href="lanctl/info.html"><span><small>En dos minutos</small><b>Ficha rápida</b></span><i aria-hidden="true">→</i></a>
+          </div>
+          <a class="lanctl-repository" href="https://github.com/CctrGy/LANCTL" target="_blank" rel="noreferrer"><span class="lanctl-repository-mark" aria-hidden="true">GH</span><span><small>Código, incidencias y versiones</small><b>Repositorio GitHub</b></span><i aria-hidden="true">↗</i></a>
+        </div>
       </div>
       <div class="lanctl-showcase" aria-label="Vista conceptual de LANCTL">
         <img src="theme/images/lanctl.png" alt="Icono oficial de LANCTL">
