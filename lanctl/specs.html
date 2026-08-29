@@ -653,13 +653,13 @@
 
         <div class="spec-hero-grid">
           <div>
-            <p class="eyebrow">Especificaciones avanzadas · 0.3.0-beta.4</p>
+            <p class="eyebrow">Especificaciones avanzadas · 0.3.0-beta.21</p>
             <h1>Una consola para entender y gobernar la red local.</h1>
             <p class="spec-lead">
-              LANCTL unifica descubrimiento, inventario, diagnóstico, automatización
-              y monitorización continua de una LAN. La misma base de datos alimenta
-              la línea de comandos, la TUI, la interfaz gráfica y el acceso remoto
-              opcional, manteniendo la identidad de cada equipo aunque cambie su IP.
+              LANCTL unifica descubrimiento, inventario, cableado, racks, credenciales
+              y monitorización continua de una LAN. Sus aplicaciones comparten servicios,
+              identificadores y configuración, pero mantienen separados los datos de cada
+              dominio para poder trabajar en paralelo con límites claros.
             </p>
           </div>
 
@@ -670,12 +670,12 @@
             <pre><code><span class="prompt-accent">PS›</span> lanctl project use Casa.vlf
 Proyecto activo: Red de casa
 
-<span class="prompt-accent">PS›</span> lanctl list --accurate --active
+<span class="prompt-accent">PS›</span> lanip list --accurate --active
 18 equipos · 15 activos · 3 cambios
 
-<span class="prompt-accent">PS›</span> lanctl history NAS --today
-<span class="terminal-muted">08:41  online   monitor   ok
-08:43  port:445 scan      detected</span></code></pre>
+<span class="prompt-accent">PS›</span> lanrack show RK-00
+<span class="terminal-muted">U24  SW-CORE   switch   online
+U20  NAS-01    storage  online</span></code></pre>
           </div>
         </div>
 
@@ -686,7 +686,7 @@ Proyecto activo: Red de casa
           </div>
           <div>
             <span>Interfaces</span>
-            <strong>CLI · TUI · GUI · SSH · HTTPS</strong>
+            <strong>GUI · CLI · TUI · aplicaciones paralelas</strong>
           </div>
           <div>
             <span>Estado</span>
@@ -700,6 +700,7 @@ Proyecto activo: Red de casa
       <nav class="spec-index" aria-label="Índice de especificaciones">
         <a href="lanctl/specs.html#vision">Visión</a>
         <a href="lanctl/specs.html#arquitectura">Arquitectura</a>
+        <a href="lanctl/specs.html#aplicaciones">Aplicaciones</a>
         <a href="lanctl/specs.html#descubrimiento">Descubrimiento</a>
         <a href="lanctl/specs.html#monitor">Monitor</a>
         <a href="lanctl/specs.html#acceso">Acceso remoto</a>
@@ -716,7 +717,7 @@ Proyecto activo: Red de casa
           <dl>
             <div>
               <dt>Versión descrita</dt>
-              <dd>0.3.0-beta.4</dd>
+              <dd>0.3.0-beta.21</dd>
             </div>
             <div>
               <dt>Formato de proyecto</dt>
@@ -861,8 +862,38 @@ Proyecto activo: Red de casa
           </div>
         </section>
 
+        <section class="spec-section" id="aplicaciones">
+          <p class="spec-kicker">03 · Aplicaciones paralelas</p>
+          <h2>Servicios compartidos, datos con propietario definido.</h2>
+          <p class="spec-intro">
+            LANCTL funciona como orquestador de una suite. Sus aplicaciones pueden
+            permanecer abiertas en paralelo, comparten identificadores, configuración
+            y una misma raíz de datos, pero cada dominio mantiene la propiedad de su
+            información y utiliza servicios transaccionales para coordinarse.
+          </p>
+
+          <div class="spec-grid">
+            <article class="spec-card accent"><span class="spec-badge">LANIP</span><h3>Inventario lógico</h3><p>Descubrimiento, dispositivos, diagnóstico y operaciones de red mediante <code>lanip</code> o <code>lanctl ip</code>.</p></article>
+            <article class="spec-card"><span class="spec-badge neutral">LANWIRE</span><h3>Infraestructura física</h3><p>Cables, puertos, paneles y enlaces viven en <code>physical/idf.db</code>, separados del inventario lógico.</p></article>
+            <article class="spec-card"><span class="spec-badge neutral">LANRACK</span><h3>Armarios y unidades U</h3><p>Consulta la base física en modo de solo lectura para representar racks y sus ocupantes.</p></article>
+            <article class="spec-card warm"><span class="spec-badge warning">LANACCESS</span><h3>Credenciales cifradas</h3><p>Administra usuarios y secretos DPAPI sin mostrar contraseñas; LANIP consume referencias autorizadas.</p></article>
+            <article class="spec-card"><span class="spec-badge neutral">LANMON</span><h3>Observabilidad</h3><p>Expone estado, eventos, historial, alertas e incidencias sobre el runtime de monitorización.</p></article>
+            <article class="spec-card"><span class="spec-badge neutral">LANDEMO</span><h3>Presentación reproducible</h3><p>Genera una red de muestra y un recorrido consistente para demostraciones del producto.</p></article>
+          </div>
+
+          <div class="spec-code" aria-label="Inicio de las aplicaciones LANCTL">
+            <div class="spec-code-head" aria-hidden="true"><i></i><i></i><i></i></div>
+            <pre><code>lanip --tui
+lanwire list
+lanrack show RK-00
+lanaccess --tui
+lanmon
+landemo --output LANCTL-demo</code></pre>
+          </div>
+        </section>
+
         <section class="spec-section" id="descubrimiento">
-          <p class="spec-kicker">03 · Descubrimiento y diagnóstico</p>
+          <p class="spec-kicker">04 · Descubrimiento y diagnóstico</p>
           <h2>La profundidad del escaneo se adapta al escenario.</h2>
           <p class="spec-intro">
             Los perfiles <code>fast</code>, <code>normal</code> y <code>accurate</code>
@@ -910,7 +941,7 @@ lanctl list --format html --output inventario.html</code></pre>
         </section>
 
         <section class="spec-section" id="monitor">
-          <p class="spec-kicker">04 · Backend Monitor</p>
+          <p class="spec-kicker">05 · Backend Monitor</p>
           <h2>De una inspección puntual a la vigilancia continua.</h2>
           <p class="spec-intro">
             El motor Monitor puede ejecutarse durante una sesión diagnóstica o quedar
@@ -951,7 +982,7 @@ lanctl monitor report latest</code></pre>
         </section>
 
         <section class="spec-section" id="acceso">
-          <p class="spec-kicker">05 · Acceso remoto controlado</p>
+          <p class="spec-kicker">06 · Acceso remoto controlado</p>
           <h2>Terminal SSH e interfaz HTTPS, apagadas por defecto.</h2>
           <p class="spec-intro">
             El acceso remoto está pensado para la propia LAN y requiere configuración
@@ -1000,7 +1031,7 @@ lanctl access enable https</code></pre>
         </section>
 
         <section class="spec-section" id="integraciones">
-          <p class="spec-kicker">06 · Integraciones operativas</p>
+          <p class="spec-kicker">07 · Integraciones operativas</p>
           <h2>Acciones especializadas sin convertir el núcleo en un monolito.</h2>
           <p class="spec-intro">
             Las funciones estrechamente ligadas a la operación se exponen como comandos
@@ -1057,7 +1088,7 @@ lanctl radmin PC --mode control --dry-run</code></pre>
         </section>
 
         <section class="spec-section" id="datos">
-          <p class="spec-kicker">07 · Datos, trazabilidad y seguridad</p>
+          <p class="spec-kicker">08 · Datos, trazabilidad y seguridad</p>
           <h2>Información portable sin mezclarla con los binarios.</h2>
           <p class="spec-intro">
             LANCTL separa instalación, datos operativos y secretos. Las escrituras sobre
@@ -1076,9 +1107,14 @@ lanctl radmin PC --mode control --dry-run</code></pre>
               </thead>
               <tbody>
                 <tr>
-                  <td>Inventario</td>
-                  <td>SQLite</td>
+                  <td>Inventario lógico</td>
+                  <td>JSON transaccional + SQLite dentro de VLF</td>
                   <td>Identidad, direcciones, servicios, grupos y atributos.</td>
+                </tr>
+                <tr>
+                  <td>Cableado físico</td>
+                  <td>SQLite · <code>physical/idf.db</code></td>
+                  <td>Identificadores, racks, puertos, paneles y conexiones de LANWIRE.</td>
                 </tr>
                 <tr>
                   <td>Proyecto</td>
@@ -1125,7 +1161,7 @@ lanctl radmin PC --mode control --dry-run</code></pre>
         </section>
 
         <section class="spec-section" id="despliegue">
-          <p class="spec-kicker">08 · Instalación y despliegue</p>
+          <p class="spec-kicker">09 · Instalación y despliegue</p>
           <h2>El mismo proyecto, desde un portátil hasta un nodo permanente.</h2>
           <p class="spec-intro">
             GitHub Releases distribuye artefactos por plataforma y arquitectura con
@@ -1166,12 +1202,13 @@ lanctl radmin PC --mode control --dry-run</code></pre>
           <div class="spec-code" aria-label="Comandos de instalación">
             <div class="spec-code-head" aria-hidden="true"><i></i><i></i><i></i></div>
             <pre><code># Windows PowerShell
-irm https://raw.githubusercontent.com/CctrGy/LANCTL/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/CctrGy/LANCTL/main/install.ps1 -OutFile install.ps1
+.\install.ps1 -Channel beta
 
 # Linux / Raspberry Pi OS 64-bit
 curl --proto '=https' --tlsv1.2 -fsSLo install.sh \
   https://raw.githubusercontent.com/CctrGy/LANCTL/main/install.sh
-sudo bash install.sh --channel stable</code></pre>
+sudo bash install.sh --channel beta</code></pre>
           </div>
 
           <div class="spec-legend" aria-label="Leyenda de estado">
