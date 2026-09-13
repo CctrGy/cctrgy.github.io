@@ -653,7 +653,7 @@
 
         <div class="spec-hero-grid">
           <div>
-            <p class="eyebrow">Especificaciones avanzadas · 0.3.0-beta.21</p>
+            <p class="eyebrow">Especificaciones avanzadas · 0.3.0-beta.22</p>
             <h1>Una consola para entender y gobernar la red local.</h1>
             <p class="spec-lead">
               LANCTL unifica descubrimiento, inventario, cableado, racks, credenciales
@@ -686,7 +686,7 @@ U20  NAS-01    storage  online</span></code></pre>
           </div>
           <div>
             <span>Interfaces</span>
-            <strong>GUI · CLI · TUI · aplicaciones paralelas</strong>
+            <strong>CLI · consola · TUI · aplicaciones paralelas</strong>
           </div>
           <div>
             <span>Estado</span>
@@ -717,7 +717,7 @@ U20  NAS-01    storage  online</span></code></pre>
           <dl>
             <div>
               <dt>Versión descrita</dt>
-              <dd>0.3.0-beta.21</dd>
+              <dd>0.3.0-beta.22</dd>
             </div>
             <div>
               <dt>Formato de proyecto</dt>
@@ -797,7 +797,8 @@ U20  NAS-01    storage  online</span></code></pre>
           <p class="spec-kicker">02 · Arquitectura</p>
           <h2>Un núcleo común, varias formas de trabajar.</h2>
           <p class="spec-intro">
-            CLI, consola persistente, TUI y GUI consumen los mismos servicios. La lógica
+            CLI, consola persistente y TUI consumen los mismos servicios. La GUI antigua
+            está congelada y no se incluye en los binarios actuales. La lógica
             de red, los modelos y la persistencia permanecen separados de la presentación,
             de modo que un escaneo iniciado desde una interfaz produce el mismo inventario
             y los mismos eventos que desde cualquier otra.
@@ -806,7 +807,7 @@ U20  NAS-01    storage  online</span></code></pre>
           <div class="spec-flow" aria-label="Flujo interno de LANCTL">
             <article>
               <strong>1. Interfaces</strong>
-              <span>CLI, TUI, GUI y sesiones remotas autorizadas.</span>
+              <span>CLI, consola, TUI y sesiones remotas autorizadas; GUI antigua congelada.</span>
             </article>
             <article>
               <strong>2. Servicios</strong>
@@ -878,7 +879,7 @@ U20  NAS-01    storage  online</span></code></pre>
             <article class="spec-card"><span class="spec-badge neutral">LANRACK</span><h3>Armarios y unidades U</h3><p>Consulta la base física en modo de solo lectura para representar racks y sus ocupantes.</p></article>
             <article class="spec-card warm"><span class="spec-badge warning">LANACCESS</span><h3>Credenciales cifradas</h3><p>Administra usuarios y secretos DPAPI sin mostrar contraseñas; LANIP consume referencias autorizadas.</p></article>
             <article class="spec-card"><span class="spec-badge neutral">LANMON</span><h3>Observabilidad</h3><p>Expone estado, eventos, historial, alertas e incidencias sobre el runtime de monitorización.</p></article>
-            <article class="spec-card"><span class="spec-badge neutral">LANDEMO</span><h3>Presentación reproducible</h3><p>Genera una red de muestra y un recorrido consistente para demostraciones del producto.</p></article>
+            <article class="spec-card"><span class="spec-badge neutral">LANBACK</span><h3>Backend previsto</h3><p>Aplicación reservada para una fase posterior; no forma parte de las 6 aplicaciones actuales.</p></article>
           </div>
 
           <div class="spec-code" aria-label="Inicio de las aplicaciones LANCTL">
@@ -887,8 +888,7 @@ U20  NAS-01    storage  online</span></code></pre>
 lanwire list
 lanrack show RK-00
 lanaccess --tui
-lanmon
-landemo --output LANCTL-demo</code></pre>
+lanmon</code></pre>
           </div>
         </section>
 
@@ -924,10 +924,17 @@ landemo --output LANCTL-demo</code></pre>
             <div class="spec-code-head" aria-hidden="true"><i></i><i></i><i></i></div>
             <pre><code>lanctl list --normal --active
 lanctl list --accurate --progress
+lanip ephemeral --normal
+lanip -e --fast --range 192.168.1.0/24
 lanctl settings --workers 64 --timeout 0.8 --scan-order ascending
 lanctl scan CAM1 --identify
 lanctl list --where "active and group=IOT and vendor~Amazon"
 lanctl list --format html --output inventario.html</code></pre>
+          </div>
+
+          <div class="spec-note">
+            <strong aria-hidden="true">i</strong>
+            <p><code>ephemeral</code> realiza una exploración aislada: detecta dispositivos sin modificar proyectos ni inventarios.</p>
           </div>
 
           <div class="spec-note">

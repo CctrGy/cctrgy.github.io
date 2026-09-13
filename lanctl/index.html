@@ -25,7 +25,7 @@
         <div class="case-meta">
           <div><span>Plataformas</span><b>Windows · Linux · Raspberry Pi</b></div>
           <div><span>Núcleo</span><b>Python · JSON · SQLite</b></div>
-          <div><span>Interfaces</span><b>GUI · CLI · TUI</b></div>
+          <div><span>Interfaces actuales</span><b>CLI · consola · TUI</b></div>
         </div>
         <div class="lanctl-actions" aria-label="Acciones de LANCTL">
           <a class="lanctl-action-primary" href="lanctl/download.html"><span><small>Windows 10 / 11</small><b>Descargar LANCTL</b></span><i aria-hidden="true">↓</i></a>
@@ -60,20 +60,19 @@
         <article><span>03</span><h3>Diagnóstico</h3><p>Ping, ARP activo, escaneo TCP e identificación de servicios basada en evidencias.</p></article>
         <article><span>04</span><h3>Administración</h3><p>Acceso a SSH, TR-064, Telnet, HTTP(S), FTP, RDP, RTSP y SMB.</p></article>
         <article><span>05</span><h3>Proyectos VLF</h3><p>Contenedores verificables con inventario SQLite, configuración, credenciales cifradas y auditoría.</p></article>
-        <article><span>06</span><h3>Suite coordinada</h3><p>Aplicaciones especializadas para inventario lógico, cableado, racks, credenciales, monitorización y demostraciones.</p></article>
+        <article><span>06</span><h3>Suite coordinada</h3><p>Aplicaciones especializadas para inventario lógico, cableado, racks, credenciales, monitorización y orquestación.</p></article>
       </div>
     </section>
 
     <section class="lanctl-apps-section" id="aplicaciones">
       <div class="section-heading"><div><p class="eyebrow"><span></span> Aplicaciones paralelas</p><h2>Una suite, responsabilidades claras.</h2></div><p>Pueden permanecer abiertas a la vez y comparten una misma raíz de datos, sin mezclar la propiedad de cada dominio.</p></div>
       <div class="lanctl-app-grid">
-        <article><span>Orquestador</span><h3>LANCTL</h3><p>Entrada general de la suite y acceso coordinado a todas sus herramientas.</p><code>lanctl --gui</code></article>
+        <article><span>Orquestador</span><h3>LANCTL</h3><p>Entrada general de la suite y acceso coordinado a todas sus herramientas.</p><code>lanctl --tui</code></article>
         <article><span>Inventario lógico</span><h3>LANIP</h3><p>Descubrimiento, dispositivos, diagnóstico y operaciones de red.</p><code>lanip --tui</code></article>
         <article><span>Infraestructura física</span><h3>LANWIRE</h3><p>Cables, puertos, paneles, conexiones y base física independiente.</p><code>lanwire list</code></article>
         <article><span>Armarios</span><h3>LANRACK</h3><p>Visualización de racks, unidades U y elementos instalados.</p><code>lanrack show RK-00</code></article>
         <article><span>Credenciales</span><h3>LANACCESS</h3><p>Usuarios y secretos cifrados mediante DPAPI, sin mostrar contraseñas.</p><code>lanaccess --tui</code></article>
         <article><span>Observabilidad</span><h3>LANMON</h3><p>Estado, eventos, historial, alertas e incidencias de monitorización.</p><code>lanmon</code></article>
-        <article><span>Presentación</span><h3>LANDEMO</h3><p>Genera un recorrido reproducible con una red de muestra.</p><code>landemo --output LANCTL-demo</code></article>
         <article><span>Futuro</span><h3>LANBACK</h3><p>Reservado para una fase posterior de administración del backend.</p><code>planned</code></article>
       </div>
     </section>
@@ -87,7 +86,7 @@
         <i>→</i>
         <article><span>Datos</span><b>JSON + SQLite + VLF</b><small>Inventario lógico · cableado · auditoría</small></article>
         <i>→</i>
-        <article><span>Presentación</span><b>GUI · CLI · TUI</b><small>Consulta · exportación · acciones</small></article>
+        <article><span>Presentación</span><b>CLI · consola · TUI</b><small>La GUI antigua está congelada y no se incluye en los binarios actuales</small></article>
       </div>
       <div class="lanctl-security"><div><span>Seguridad</span><b>DPAPI</b><p>Credenciales vinculadas al usuario de Windows y confirmación de operaciones sensibles.</p></div><div><span>Extensibilidad</span><b>.lcp</b><p>Plugins verificables con permisos, eventos y ámbitos explícitos.</p></div><div><span>Coordinación</span><b>Raíz compartida</b><p>Las aplicaciones reutilizan configuración e identificadores sin mezclar las bases de cada dominio.</p></div></div>
     </section>
@@ -95,12 +94,12 @@
     <section class="lanctl-workflow">
       <div class="section-heading"><div><p class="eyebrow"><span></span> Flujo de trabajo</p><h2>De la detección al inventario.</h2></div><p>Los perfiles permiten elegir entre velocidad y profundidad sin cambiar de herramienta.</p></div>
       <div class="workflow-grid">
-        <article><span>01</span><h3>Descubrir</h3><code>lanctl list --accurate --progress</code><p>Localiza equipos mediante ICMP, ARP y WS-Discovery. Los plugins pueden añadir mDNS y SSDP.</p></article>
+        <article><span>01</span><h3>Descubrir</h3><code>lanip ephemeral --normal</code><p>Localiza equipos mediante ICMP, ARP y WS-Discovery sin modificar proyectos ni inventarios. Los plugins pueden añadir mDNS y SSDP.</p></article>
         <article><span>02</span><h3>Identificar</h3><code>lanctl scan CAM1 --identify</code><p>Utiliza banners y sondas inocuas, registrando producto, confianza y evidencia.</p></article>
         <article><span>03</span><h3>Consultar</h3><code>lanctl list --where "active and group=IOT"</code><p>Filtra de forma segura por IP, MAC, alias, fabricante, protocolo, grupo o estado.</p></article>
         <article><span>04</span><h3>Conectar</h3><code>lanctl open NAS ssh --dry-run</code><p>Prepara el cliente adecuado y permite revisar el destino antes de abrirlo.</p></article>
       </div>
-      <div class="interfaces-strip"><div><b>GUI</b><span>Inventario, edición, proyectos y diagnóstico</span></div><div><b>CLI</b><span>Comandos rápidos y automatizables</span></div><div><b>Consola</b><span>Selección persistente de dispositivos</span></div><div><b>TUI</b><span>Acciones contextuales a pantalla completa</span></div></div>
+      <div class="interfaces-strip"><div><b>GUI congelada</b><span>Interfaz antigua, no incluida en los binarios actuales</span></div><div><b>CLI</b><span>Comandos rápidos y automatizables</span></div><div><b>Consola</b><span>Selección persistente de dispositivos</span></div><div><b>TUI</b><span>Acciones contextuales a pantalla completa</span></div></div>
     </section>
 
     <section class="lanctl-formats" id="vlf-lcp">
@@ -114,11 +113,11 @@
     </section>
 
     <section class="lanctl-release">
-      <p class="section-kicker">06 / Estado de la beta</p><div class="release-number">0.3.0<span>-beta.21</span></div><div class="release-facts"><article><b>beta.21</b><span>estado actual documentado en la rama principal</span></article><article><b>beta.20</b><span>última versión empaquetada en GitHub Releases</span></article><article><b>7 + 1</b><span>aplicaciones disponibles y una prevista</span></article><article><b>SHA-256</b><span>instaladores y paquetes verificables</span></article></div><p class="release-note">El primer arranque crea automáticamente una estructura de datos válida. Las aplicaciones pueden ejecutarse en paralelo y comparten configuración e identificadores mediante la misma raíz de datos.</p>
+      <p class="section-kicker">06 / Estado de la beta</p><div class="release-number">0.3.0<span>-beta.22</span></div><div class="release-facts"><article><b>beta.22</b><span>estado actual documentado en la rama principal</span></article><article><b>beta.20</b><span>última versión empaquetada en GitHub Releases</span></article><article><b>6 + 1</b><span>6 aplicaciones actuales y LANBACK prevista</span></article><article><b>SHA-256</b><span>instaladores y paquetes verificables</span></article></div><p class="release-note">El primer arranque crea automáticamente una estructura de datos válida. Las aplicaciones pueden ejecutarse en paralelo y comparten configuración e identificadores mediante la misma raíz de datos.</p>
     </section>
 
     <section class="lanctl-install">
-      <div><p class="section-kicker">07 / Ejecutar el proyecto</p><h2>Windows, Linux y Raspberry Pi OS.</h2><p>Python 3.10+ permite ejecutarlo desde el código. La GUI usa <code>pywebview</code> y las operaciones de red requieren autorización y privilegios suficientes.</p></div><div class="install-code"><div class="window-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>git clone https://github.com/CctrGy/LANCTL.git<br>cd LANCTL<br>python -m venv .venv<br>.\.venv\Scripts\Activate.ps1<br>python -m pip install -e .<br><br>lanctl --gui<br>lanip --tui<br>lanwire list<br>lanrack --tui<br>lanaccess --tui<br>lanmon</code></pre></div>
+      <div><p class="section-kicker">07 / Ejecutar el proyecto</p><h2>Windows, Linux y Raspberry Pi OS.</h2><p>Python 3.10+ permite ejecutarlo desde el código. Los binarios actuales incluyen CLI, consola y TUI; la GUI antigua basada en <code>pywebview</code> está congelada y no se distribuye. Las operaciones de red requieren autorización y privilegios suficientes.</p></div><div class="install-code"><div class="window-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre><code>git clone https://github.com/CctrGy/LANCTL.git<br>cd LANCTL<br>python -m venv .venv<br>.\.venv\Scripts\Activate.ps1<br>python -m pip install -e .<br><br>lanctl --tui<br>lanip --tui<br>lanip ephemeral --normal<br>lanip -e --fast --range 192.168.1.0/24<br>lanwire list<br>lanrack --tui<br>lanaccess --tui<br>lanmon</code></pre></div>
     </section>
 
     <section class="next-project"><span>Siguiente proyecto</span><a href="gitdroid/">GitDroidStore <b>↗</b></a></section>
