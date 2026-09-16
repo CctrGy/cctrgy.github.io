@@ -31,7 +31,7 @@
           <a class="lanctl-action-primary" href="lanctl/download.html"><span><small>Windows 10 / 11</small><b>Descargar LANCTL</b></span><i aria-hidden="true">↓</i></a>
           <div class="lanctl-action-secondary">
             <a href="lanctl/specs.html"><span><small>Documentación</small><b>Especificaciones</b></span><i aria-hidden="true">→</i></a>
-            <a href="lanctl/info.html"><span><small>En dos minutos</small><b>Ficha rápida</b></span><i aria-hidden="true">→</i></a>
+            <a href="lanctl/reference/"><span><small>Todos los comandos</small><b>LANCTL Reference</b></span><i aria-hidden="true">→</i></a>
           </div>
           <a class="lanctl-repository" href="https://github.com/CctrGy/LANCTL" target="_blank" rel="noreferrer"><span class="lanctl-repository-mark" aria-hidden="true">GH</span><span><small>Código, incidencias y versiones</small><b>Repositorio GitHub</b></span><i aria-hidden="true">↗</i></a>
         </div>
@@ -95,16 +95,16 @@
       <div class="section-heading"><div><p class="eyebrow"><span></span> Flujo de trabajo</p><h2>De la detección al inventario.</h2></div><p>Los perfiles permiten elegir entre velocidad y profundidad sin cambiar de herramienta.</p></div>
       <div class="workflow-grid">
         <article><span>01</span><h3>Descubrir</h3><code>lanip ephemeral --normal</code><p>Localiza equipos mediante ICMP, ARP y WS-Discovery sin modificar proyectos ni inventarios. Los plugins pueden añadir mDNS y SSDP.</p></article>
-        <article><span>02</span><h3>Identificar</h3><code>lanctl scan CAM1 --identify</code><p>Utiliza banners y sondas inocuas, registrando producto, confianza y evidencia.</p></article>
-        <article><span>03</span><h3>Consultar</h3><code>lanctl list --where "active and group=IOT"</code><p>Filtra de forma segura por IP, MAC, alias, fabricante, protocolo, grupo o estado.</p></article>
+        <article><span>02</span><h3>Identificar</h3><code>lanip scan CAM1 --identify</code><p>Utiliza banners y sondas inocuas, registrando producto, confianza y evidencia.</p></article>
+        <article><span>03</span><h3>Consultar</h3><code>lanip list --where "active and group=IOT"</code><p>Filtra de forma segura por IP, MAC, alias, fabricante, protocolo, grupo o estado.</p></article>
         <article><span>04</span><h3>Conectar</h3><code>lanctl open NAS ssh --dry-run</code><p>Prepara el cliente adecuado y permite revisar el destino antes de abrirlo.</p></article>
       </div>
       <div class="interfaces-strip"><div><b>GUI congelada</b><span>Interfaz antigua, no incluida en los binarios actuales</span></div><div><b>CLI</b><span>Comandos rápidos y automatizables</span></div><div><b>Consola</b><span>Selección persistente de dispositivos</span></div><div><b>TUI</b><span>Acciones contextuales a pantalla completa</span></div></div>
     </section>
 
     <section class="lanctl-formats" id="vlf-lcp">
-      <div class="format-card format-vlf"><p class="section-kicker">03 / Proyectos VLF 1.0</p><h2>Una red completa en un contenedor verificable.</h2><p>Un archivo <code>.vlf</code> conserva metadatos, identidad de LAN, VLAN, topología, inventario SQLite, configuración, credenciales cifradas y auditoría diaria.</p><ul><li>Hashes SHA-256 de contenido y checksum general.</li><li>Verificación de estructura y de integridad SQLite.</li><li>Actualizaciones transaccionales con copia <code>.vlf.bak</code>.</li><li>Compatibilidad garantizada dentro de la serie LANCTL 0.3.x.</li><li>Protección frente a rutas absolutas, duplicados y archivos sobredimensionados.</li></ul><code class="command-line">lanctl project verify Oficina.vlf</code></div>
-      <div class="format-card format-lcp"><p class="section-kicker">04 / Complement Platform 1.0</p><h2>Extensiones con alcance declarado.</h2><p>Los paquetes <code>.lcp</code> pueden añadir plugins, temas, idiomas, automatización, análisis, seguridad, protocolos, scanners y exportadores.</p><ul><li>Runtime <b>isolated</b> para extensiones declarativas.</li><li>Runtime <b>trusted</b> con activación explícita mediante <code>--trust</code>.</li><li>Permisos, dependencias, eventos y namespaces verificables.</li><li>Instalación transaccional; un paquete nunca se activa automáticamente.</li><li>Modo seguro para recuperar el arranque ante plugins defectuosos.</li></ul><code class="command-line">lanctl plugin enable ID --grant-all --trust</code></div>
+      <div class="format-card format-vlf"><p class="section-kicker">03 / Proyectos VLF 1.0</p><h2>Una red completa en un contenedor verificable.</h2><p>Un archivo <code>.vlf</code> conserva metadatos, identidad de LAN, VLAN, topología, inventario SQLite, configuración, credenciales cifradas y auditoría diaria.</p><ul><li>Hashes SHA-256 de contenido y checksum general.</li><li>Verificación de estructura y de integridad SQLite.</li><li>Actualizaciones transaccionales con copia <code>.vlf.bak</code>.</li><li>Compatibilidad garantizada dentro de la serie LANCTL 0.3.x.</li><li>Protección frente a rutas absolutas, duplicados y archivos sobredimensionados.</li></ul><code class="command-line">lanip project verify Oficina.vlf</code></div>
+      <div class="format-card format-lcp"><p class="section-kicker">04 / Complement Platform 1.0</p><h2>Extensiones con alcance declarado.</h2><p>Los paquetes <code>.lcp</code> pueden añadir plugins, temas, idiomas, automatización, análisis, seguridad, protocolos, scanners y exportadores.</p><ul><li>Runtime <b>isolated</b> para extensiones declarativas.</li><li>Runtime <b>trusted</b> con activación explícita mediante <code>--trust</code>.</li><li>Permisos, dependencias, eventos y namespaces verificables.</li><li>Instalación transaccional; un paquete nunca se activa automáticamente.</li><li>Modo seguro para recuperar el arranque ante plugins defectuosos.</li></ul><code class="command-line">lanip plugin enable ID --grant-all</code></div>
     </section>
 
     <section class="lanctl-security-section" id="seguridad">
@@ -113,7 +113,7 @@
     </section>
 
     <section class="lanctl-release">
-      <p class="section-kicker">06 / Estado de la beta</p><div class="release-number">0.3.0<span>-beta.22</span></div><div class="release-facts"><article><b>beta.22</b><span>estado actual documentado en la rama principal</span></article><article><b>beta.20</b><span>última versión empaquetada en GitHub Releases</span></article><article><b>6 + 1</b><span>6 aplicaciones actuales y LANBACK prevista</span></article><article><b>SHA-256</b><span>instaladores y paquetes verificables</span></article></div><p class="release-note">El primer arranque crea automáticamente una estructura de datos válida. Las aplicaciones pueden ejecutarse en paralelo y comparten configuración e identificadores mediante la misma raíz de datos.</p>
+      <p class="section-kicker">06 / Estado de la beta</p><div class="release-number">0.3.1<span>-beta.2</span></div><div class="release-facts"><article><b>beta.2</b><span>estado actual documentado en la rama principal</span></article><article><b>beta.1</b><span>última versión empaquetada en GitHub Releases</span></article><article><b>6 aplicaciones</b><span>suite coordinada con dominios separados</span></article><article><b>SHA-256</b><span>instaladores y paquetes verificables</span></article></div><p class="release-note">La beta.2 incorpora LANCTL Reference, configuración del diseño TUI, relación de usuarios y protocolos, políticas para dispositivos desconectados y documentos JSON versionados. El primer arranque crea automáticamente una estructura de datos válida.</p>
     </section>
 
     <section class="lanctl-install">
