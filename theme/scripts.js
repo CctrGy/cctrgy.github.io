@@ -17,6 +17,11 @@ navigation?.querySelectorAll('a').forEach((link) => {
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
 
+const sponsorsLink = document.querySelector('[data-sponsors-link]');
+sponsorsLink?.addEventListener('click', (event) => {
+  if (sponsorsLink.getAttribute('aria-disabled') === 'true') event.preventDefault();
+});
+
 const favicon = document.createElement('link');
 favicon.rel = 'icon';
 favicon.type = 'image/png';
