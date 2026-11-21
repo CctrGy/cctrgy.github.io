@@ -33,6 +33,16 @@ body[data-intro="true"] .caption{display:none}body[data-intro="true"] .floating-
 .intro-process{display:flex;gap:12px;margin-top:32px}.intro-process span{flex:1;padding:14px 10px;border:1px solid #b9f56830;border-radius:6px;text-align:center;font-size:14px;background:#b9f56808;animation:breathe 6s ease-in-out infinite}.intro-process span:nth-child(2){animation-delay:1s}.intro-process span:nth-child(3){animation-delay:2s}
 .intro-signature{margin-top:24px;color:#8998ab;font-size:13px;letter-spacing:.04em}.intro-signature i{font-style:normal;color:var(--accent);padding:0 12px}
 
+
+dialog{max-height:90dvh;overflow-y:auto}
+.order-settings{margin:24px 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.order-settings h3{margin:0;font:500 19px 'Space Grotesk',sans-serif}.order-settings p{margin:8px 0 16px}
+#scene-order{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+#scene-order li{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#ffffff05;border:1px solid var(--line);border-radius:7px}
+#scene-order li>span{flex:1;font-size:14px}#scene-order button{padding:8px 10px;border:1px solid #ffffff25;border-radius:5px;background:#263143;font-size:12px}
+#scene-order button:disabled{opacity:.25;cursor:default}.order-reset{background:none;color:var(--accent);padding:0;margin-top:16px;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
 </style>
 </head>
 <body data-project="0">
@@ -44,7 +54,7 @@ body[data-intro="true"] .caption{display:none}body[data-intro="true"] .floating-
 <footer class="footer"><div class="footer-row"><nav class="tabs" aria-label="Elegir programa"><button class="tab active" data-index="0" aria-current="true">Inicio</button><button class="tab" data-index="1">LANCTL</button><button class="tab" data-index="2">GitDroidStore</button><button class="tab" data-index="3">PortWaver</button></nav><div class="controls"><span class="mode" id="mode">Automático · 15 s</span><button class="iconbutton" id="previous" aria-label="Programa anterior" title="Anterior (←)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m14 6-6 6 6 6"/></svg></button><button class="iconbutton" id="play" aria-label="Pausar presentación" title="Reproducir o pausar (espacio)"></button><button class="iconbutton" id="next" aria-label="Programa siguiente" title="Siguiente (→)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m10 6 6 6-6 6"/></svg></button></div></div><div class="progress" role="progressbar" aria-label="Tiempo de la escena" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress"></div></div></footer>
 </div>
 <div class="help" id="toast" role="status"></div>
-<dialog id="dialog"><h2>A tu ritmo.</h2><p>La presentación recorre la bienvenida y los tres proyectos en bucle. Al elegir uno manualmente se pausa para que puedas explicarlo.</p><label for="duration">Tiempo por programa<select id="duration"><option value="10000">10 segundos</option><option value="15000" selected>15 segundos</option><option value="20000">20 segundos</option><option value="30000">30 segundos</option></select></label><p><kbd>← →</kbd> Cambiar de programa<br><kbd>Espacio</kbd> Pausar o continuar<br><kbd>F</kbd> Pantalla completa</p><p>Usa «Añadir capturas» en cada programa para probar tus imágenes. Se conservan durante esta sesión; después las incorporaremos a la web.</p><div class="dialog-actions"><button class="dialog-button" id="clear-images">Quitar capturas de este programa</button><button class="dialog-button primary" id="close-dialog">Listo</button></div></dialog>
+<dialog id="dialog"><h2>A tu ritmo.</h2><p>La presentación recorre la bienvenida y los tres proyectos en bucle. Al elegir uno manualmente se pausa para que puedas explicarlo.</p><label for="duration">Tiempo por programa<select id="duration"><option value="10000">10 segundos</option><option value="15000" selected>15 segundos</option><option value="20000">20 segundos</option><option value="30000">30 segundos</option></select></label><section class="order-settings" aria-labelledby="order-title"><h3 id="order-title">Orden de presentación</h3><p>Sube o baja cada escena para elegir el recorrido. El orden se guarda en este navegador.</p><ol id="scene-order" aria-label="Orden de las escenas"></ol><button type="button" class="order-reset" id="reset-order">Restablecer orden original</button><span class="sr-only" role="status" id="order-status"></span></section><p><kbd>← →</kbd> Cambiar de programa<br><kbd>Espacio</kbd> Pausar o continuar<br><kbd>F</kbd> Pantalla completa</p><p>Usa «Añadir capturas» en cada programa para probar tus imágenes. Se conservan durante esta sesión; después las incorporaremos a la web.</p><div class="dialog-actions"><button class="dialog-button" id="clear-images">Quitar capturas de este programa</button><button class="dialog-button primary" id="close-dialog">Listo</button></div></dialog>
 <input type="file" accept="image/*" multiple id="file-input">
 <script>
 'use strict';
@@ -75,16 +85,50 @@ const projects=[
 <em>&gt;</em> <span class="cursor"></span></pre><div class="wave"><svg viewBox="0 0 1000 80" preserveAspectRatio="none"><path d="M0 40h30V12h30v56h30V25h30v30h30V10h30v60h30V40h30V20h30v40h30V12h30v56h30V30h30v20h30V10h30v60h30V40h50V12h30v56h30V25h30v30h30V10h30v60h30V40h30V20h30v40h30V12h30v56h30V30h30v20h30V10h30v60h30V40h50"/></svg></div><div class="serial-bottom"><span>DATOS ILUSTRATIVOS</span><span>RX / TX · SERIAL</span></div>`}
 ];
 const $=id=>document.getElementById(id);let index=0,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,duration=15000,elapsed=0,last=performance.now(),imageIndex=0,imageElapsed=0,uploadTarget=0,toastTimeout;
+
+const defaultSceneIds=['inicio','lanctl','gitdroid','portwaver'];
+projects.forEach((project,i)=>{project.id=defaultSceneIds[i];project.theme=Math.max(0,i-1);project.label=i===0?'Inicio':project.name});
+function saveOrder(){try{localStorage.setItem('feria-scene-order',JSON.stringify(projects.map(p=>p.id)))}catch{notify('El orden se ha aplicado, pero este navegador no permite guardarlo.')}}
+function applyOrder(ids){
+  if(!Array.isArray(ids)||ids.length!==projects.length||new Set(ids).size!==projects.length||!ids.every(id=>defaultSceneIds.includes(id)))return false;
+  const active=projects[index];const lookup=new Map(projects.map(p=>[p.id,p]));
+  projects.splice(0,projects.length,...ids.map(id=>lookup.get(id)));index=projects.indexOf(active);return true;
+}
+try{const saved=JSON.parse(localStorage.getItem('feria-scene-order')||'null');if(applyOrder(saved))index=0}catch{}
+function renderTabs(){
+  document.querySelector('.tabs').replaceChildren(...projects.map((p,i)=>{
+    const button=document.createElement('button');button.type='button';button.className='tab';button.dataset.index=i;button.textContent=p.label;
+    button.addEventListener('click',()=>change(i));return button;
+  }));
+}
+function moveScene(id,direction){
+  const from=projects.findIndex(p=>p.id===id),to=from+direction;if(to<0||to>=projects.length)return;
+  const active=projects[index];const [moved]=projects.splice(from,1);projects.splice(to,0,moved);index=projects.indexOf(active);
+  saveOrder();renderTabs();render();renderOrder();$('order-status').textContent=`${moved.label}, posición ${to+1} de ${projects.length}`;
+  const row=Array.from($('scene-order').children).find(el=>el.dataset.id===id);const preferred=row.querySelector(direction<0?'[data-move="up"]':'[data-move="down"]');
+  (preferred.disabled?row.querySelector('button:not(:disabled)'):preferred).focus();
+}
+function renderOrder(){
+  $('scene-order').replaceChildren(...projects.map((p,i)=>{
+    const row=document.createElement('li');row.dataset.id=p.id;const name=document.createElement('span');name.textContent=p.label;row.append(name);
+    for(const [direction,text] of [[-1,'Subir'],[1,'Bajar']]){
+      const button=document.createElement('button');button.type='button';button.textContent=text;button.dataset.move=direction<0?'up':'down';button.setAttribute('aria-label',`${text} ${p.label}`);
+      button.disabled=direction<0?i===0:i===projects.length-1;button.onclick=()=>moveScene(p.id,direction);row.append(button);
+    }return row;
+  }));
+}
+$('reset-order').onclick=()=>{applyOrder(defaultSceneIds);saveOrder();renderTabs();render();renderOrder();$('order-status').textContent='Orden original restablecido'};
+
 function notify(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').classList.remove('visible'),3500)}
 function updatePlay(){ $('play').innerHTML=playing?'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>':'<svg viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7z"/></svg>';$('play').setAttribute('aria-label',playing?'Pausar presentación':'Reproducir presentación');$('mode').textContent=playing?`Automático · ${duration/1000} s`:'Manual · En pausa'}
 function updateImage(){const p=projects[index];$('showcase').classList.toggle('shot-ready',p.images.length>0);if(p.images.length){$('screenshot').src=p.images[imageIndex];$('screenshot').alt=`Captura de ${p.name}, imagen ${imageIndex+1} de ${p.images.length}`;$('screenshot').classList.remove('reveal');void $('screenshot').offsetWidth;$('screenshot').classList.add('reveal');$('caption').textContent=`${p.name} · Captura ${imageIndex+1} / ${p.images.length}`}else{$('screenshot').removeAttribute('src');$('caption').textContent='Maqueta ilustrativa · capturas pendientes'}$('load-images').textContent=p.images.length?'Cambiar capturas':'Añadir capturas'}
-function render(){const p=projects[index];document.body.dataset.project=Math.max(0,index-1);document.body.dataset.intro=String(index===0);$('project-link').lastChild.textContent=index===0?'Conoce los proyectos':'Explorar el proyecto';document.querySelector('.window-top b').textContent=index===0?'A MEDIDA':'VISTA PREVIA';$('category').textContent=p.category;$('name').textContent=p.name;$('tagline').innerHTML=p.tagline;$('description').textContent=p.description;$('tags').replaceChildren(...p.tags.map(t=>{let e=document.createElement('span');e.textContent=t;return e}));$('project-link').href=p.url;$('window-title').textContent=p.window;$('feature-label').textContent=p.feature;$('symbol').textContent=p.symbol;$('mockup').innerHTML=p.mock;imageIndex=0;imageElapsed=0;updateImage();document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',i===index);if(i===index)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current')});for(const [id,cls] of [['copy','enter-copy'],['visual','enter-visual']]){let el=$(id);el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls)}$('progress').style.width='0%';document.querySelector('[role="progressbar"]').setAttribute('aria-valuenow','0');updatePlay()}
+function render(){const p=projects[index];document.body.dataset.project=p.theme;document.body.dataset.intro=String(p.id==='inicio');$('project-link').lastChild.textContent=p.id==='inicio'?'Conoce los proyectos':'Explorar el proyecto';document.querySelector('.window-top b').textContent=p.id==='inicio'?'A MEDIDA':'VISTA PREVIA';$('category').textContent=p.category;$('name').textContent=p.name;$('tagline').innerHTML=p.tagline;$('description').textContent=p.description;$('tags').replaceChildren(...p.tags.map(t=>{let e=document.createElement('span');e.textContent=t;return e}));$('project-link').href=p.url;$('window-title').textContent=p.window;$('feature-label').textContent=p.feature;$('symbol').textContent=p.symbol;$('mockup').innerHTML=p.mock;imageIndex=0;imageElapsed=0;updateImage();document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',i===index);if(i===index)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current')});for(const [id,cls] of [['copy','enter-copy'],['visual','enter-visual']]){let el=$(id);el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls)}$('progress').style.width='0%';document.querySelector('[role="progressbar"]').setAttribute('aria-valuenow','0');updatePlay()}
 function change(next,manual=true){index=(next+projects.length)%projects.length;elapsed=0;if(manual)playing=false;render()}
 function togglePlay(){playing=!playing;if(playing&&elapsed>=duration)elapsed=0;last=performance.now();updatePlay()}
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>change(Number(t.dataset.index))));$('previous').onclick=()=>change(index-1);$('next').onclick=()=>change(index+1);$('play').onclick=togglePlay;
+renderTabs();$('previous').onclick=()=>change(index-1);$('next').onclick=()=>change(index+1);$('play').onclick=togglePlay;
 async function fullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch{notify('Usa F11 en el navegador para activar la pantalla completa.')}}
 $('fullscreen').onclick=fullscreen;document.addEventListener('fullscreenchange',()=>{$('fullscreen').setAttribute('aria-label',document.fullscreenElement?'Salir de pantalla completa':'Entrar en pantalla completa')});
-let resumeAfterDialog=false;$('settings').onclick=()=>{resumeAfterDialog=playing;playing=false;updatePlay();$('dialog').showModal()};$('close-dialog').onclick=()=>$('dialog').close();$('dialog').addEventListener('close',()=>{playing=resumeAfterDialog;last=performance.now();updatePlay()});$('duration').onchange=e=>{duration=Number(e.target.value);elapsed=0;updatePlay()};$('clear-images').onclick=()=>{projects[index].images.forEach(URL.revokeObjectURL);projects[index].images=[];imageIndex=0;updateImage();notify('Capturas retiradas de este programa')};
+let resumeAfterDialog=false;$('settings').onclick=()=>{resumeAfterDialog=playing;playing=false;updatePlay();renderOrder();$('dialog').showModal()};$('close-dialog').onclick=()=>$('dialog').close();$('dialog').addEventListener('close',()=>{playing=resumeAfterDialog;last=performance.now();updatePlay()});$('duration').onchange=e=>{duration=Number(e.target.value);elapsed=0;updatePlay()};$('clear-images').onclick=()=>{projects[index].images.forEach(URL.revokeObjectURL);projects[index].images=[];imageIndex=0;updateImage();notify('Capturas retiradas de este programa')};
 $('load-images').onclick=()=>{uploadTarget=index;playing=false;updatePlay();$('file-input').click()};$('file-input').onchange=e=>{const files=Array.from(e.target.files).filter(f=>f.type.startsWith('image/'));if(!files.length)return;projects[uploadTarget].images.forEach(URL.revokeObjectURL);projects[uploadTarget].images=files.map(f=>URL.createObjectURL(f));if(uploadTarget===index){imageIndex=0;imageElapsed=0;updateImage()}notify(`${files.length} captura${files.length===1?'':'s'} añadida${files.length===1?'':'s'} a ${projects[uploadTarget].name}`);e.target.value=''};
 document.addEventListener('keydown',e=>{if($('dialog').open||['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight'){e.preventDefault();change(index+1)}if(e.key==='ArrowLeft'){e.preventDefault();change(index-1)}if(e.code==='Space'){e.preventDefault();togglePlay()}if(e.key.toLowerCase()==='f'){e.preventDefault();fullscreen()}});
 document.addEventListener('visibilitychange',()=>last=performance.now());
